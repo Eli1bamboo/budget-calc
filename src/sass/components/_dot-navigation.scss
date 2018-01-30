@@ -1,0 +1,62 @@
+// *************************************
+//
+//   Dot navigation
+//
+// *************************************
+
+.fs-nav-dots {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    left: auto;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    button {
+        position: relative;
+        display: block;
+        padding: 0;
+        margin: 16px 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: transparent;
+        -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: $color-black;
+            content: '';
+            text-indent: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            content: '';
+            text-indent: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            background-color: rgba(0,0,0, 0.4);
+            -webkit-transform: perspective(1000px) rotate3d(0, 1, 0, 180deg);
+            transform: perspective(1000px) rotate3d(0, 1, 0, 180deg);
+        }
+        &.fs-dot-current {
+            -webkit-transform: perspective(1000px) rotate3d(0, 1, 0, 180deg);
+            transform: perspective(1000px) rotate3d(0, 1, 0, 180deg);
+        }
+        &:hover::before,
+        &.fs-dot-current::before {
+            background: $color-yellow;
+        }
+    }
+}

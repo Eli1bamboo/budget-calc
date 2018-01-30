@@ -1,0 +1,20 @@
+footer
+    .container
+        p.footer-text
+            | © 2017 Mobomo.com
+
+
+script(src='js/jquery-3.1.0.min.js')
+script(src='js/calculator.js')
+script(src='js/classie.js')
+script(src='js/selectFx.js')
+script(src='js/fullscreenForm.js')
+script.
+    (function() {
+        var formWrap = document.getElementById( 'fs-form-wrap' );
+        new FForm( formWrap, {
+            onReview : function() {
+                classie.add( document.body, 'overview' );
+            }
+        } );
+    })();

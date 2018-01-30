@@ -1,0 +1,45 @@
+// *************************************
+//
+//   Modular Sass
+//   -> Manifest
+//
+// *************************************
+//
+
+@import
+
+// -------------------------------------
+//   Vendor
+// -------------------------------------
+    'vendor/bootstrap',
+
+// -------------------------------------
+//   Foundation
+// -------------------------------------
+    'foundation/config',
+    'foundation/mixins',
+    'foundation/base',
+    'foundation/utilities',
+    'foundation/typography',
+    'foundation/layout',
+
+// -------------------------------------
+//   Structure
+// -------------------------------------
+    'structures/header',
+    'structures/navbar',
+    'structures/footer',
+
+// -------------------------------------
+//   Components
+// -------------------------------------
+    'components/forms',
+    'components/buttons',
+    'components/dot-navigation',
+    'components/number-indicator',
+    'components/progress-bar',
+
+// -------------------------------------
+//   Others
+// -------------------------------------
+    'shame.scss';

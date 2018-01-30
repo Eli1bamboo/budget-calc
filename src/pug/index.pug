@@ -1,0 +1,128 @@
+include partials/head
+
+body
+    .container
+        #fs-form-wrap.fs-form-wrap
+            .fs-title
+                a(href="http://www.mobomo.com", target="_blank")
+                    img.logo(src="images/mobomo-logo.png")
+                h1 App budget calculator
+            form#myform.fs-form.fs-form-full(autocomplete='off')
+                //form#myform.fs-form.fs-form-overview.fs-show(autocomplete='off')
+                .final-title
+                    p Your app estimate:&nbsp;
+                        span $12000
+                    p.small We are the top development firm. Get your project started now!
+                ol.fs-fields
+                    li(data-input-trigger='')
+                        label.fs-field-label.fs-anim-upper(for='q1', data-info="Apple iOS is a better choice to reach a more engaged user base. Android has a broader reach, however, particularly in emerging markets, like Asia and Africa.") What type of app are you building?
+                        p
+                        .fs-radio-group.fs-radio-custom.clearfix.fs-anim-lower
+                            span
+                                input#q1a(name='q1', type='radio', value='8000')
+                                label.radio-android(for='q1a') Android
+                            span
+                                input#q1b(name='q1', type='radio', value='8000')
+                                label.radio-ios(for='q1b') Apple iOS
+                            span
+                                input#q1c(name='q1', type='radio', value='16000')
+                                label.radio-android-ios(for='q1c') Apple iOS <br> and Android
+                    li(data-input-trigger='')
+                        label.fs-field-label.fs-anim-upper(for='q2', data-info="An email login is generally best to start with unless your app will have tight integration with services like Facebook or Twitter, in which case social login is better.") Do people have to login?
+                        .fs-radio-group.fs-radio-custom.clearfix.fs-anim-lower
+                            span
+                                input#q2a(name='q2', type='radio', value='2000')
+                                label.radio-email(for='q2a') Email
+                            span
+                                input#q2b(name='q2', type='radio', value='4000')
+                                label.radio-social(for='q2b') Social
+                            span
+                                input#q2c(name='q2', type='radio', value='0')
+                                label.radio-no(for='q2c') No
+                            span
+                                input#q2d(name='q2', type='radio', value='0')
+                                label.radio-dont-know(for='q2d') I don't know
+                    li(data-input-trigger='')
+                        label.fs-field-label.fs-anim-upper(for='q3', data-info='A profile means that some of the people that use your app will have to enter information about themselves that might be viewed publicly.') Do people create personal profiles?
+                        .fs-radio-group.fs-radio-custom.clearfix.fs-anim-lower
+                            span
+                                input#q3a(name='q3', type='radio', value='3000')
+                                label.radio-yes-profile(for='q3a') Yes
+                            span
+                                input#q3b(name='q3', type='radio', value='0')
+                                label.radio-no-profile(for='q3b') No
+                            span
+                                input#q3c(name='q3', type='radio', value='0')
+                                label.radio-dont-know(for='q3c') I don't know
+                    li(data-input-trigger='')
+                        label.fs-field-label.fs-anim-upper(for='q4', data-info='Upfront cost is cheaper to build than in-app purchases but in-app purchase can produce higher returns if/when you have an engaged user base.') How will you make money from your app?
+                        .fs-radio-group.fs-radio-custom.clearfix.fs-anim-lower
+                            span
+                                input#q4a(name='q4', type='radio', value='1000')
+                                label.radio-money(for='q4a') Upfront Cost
+                            span
+                                input#q4b(name='q4', type='radio', value='3000')
+                                label.radio-app-buy(for='q4b') In-app Purchase
+                            span
+                                input#q4c(name='q4', type='radio', value='0')
+                                label.radio-free(for='q4c') Free
+                            span
+                                input#q4d(name='q4', type='radio', value='0')
+                                label.radio-dont-know(for='q4d') I don't know
+                    li(data-input-trigger='')
+                        label.fs-field-label.fs-anim-upper(for='q5', data-info='Keep in mind, ranking systems can vary in complexity and thus impact your budget.') Do people rate or review things?
+                        .fs-radio-group.fs-radio-custom.clearfix.fs-anim-lower
+                            span
+                                input#q5a(name='q5', type='radio', value='3000')
+                                label.radio-yes-reviews(for='q5a') Yes
+                            span
+                                input#q5b(name='q5', type='radio', value='0')
+                                label.radio-no-reviews(for='q5b') No
+                            span
+                                input#q5c(name='q5', type='radio', value='0')
+                                label.radio-dont-know(for='q5c') I don't know
+                    li(data-input-trigger='')
+                        label.fs-field-label.fs-anim-upper(for='q6', data-info="This means you'll need to make an API (or Application Programming Interface.) It's how all your friendly apps talk to each other.") Does your app need to connect with your website?
+                        .fs-radio-group.fs-radio-custom.clearfix.fs-anim-lower
+                            span
+                                input#q6a(name='q6', type='radio', value='5000')
+                                label.radio-yes-website(for='q6a') Yes
+                            span
+                                input#q6b(name='q6', type='radio', value='0')
+                                label.radio-no-website(for='q6b') No
+                            span
+                                input#q6c(name='q6', type='radio', value='0')
+                                label.radio-dont-know(for='q6c') I don't know
+                    li(data-input-trigger='')
+                        label.fs-field-label.fs-anim-upper(for='q7', data-info="Custom gestures, custom buttons, and custom transitions will cost you — it's not cheap being pretty.") How nice should your app look?
+                        .fs-radio-group.fs-radio-custom.clearfix.fs-anim-lower
+                            span
+                                input#q7a(name='q7', type='radio', value='1900')
+                                label.radio-bare-bones(for='q7a') Bare-bones
+                            span
+                                input#q7b(name='q7', type='radio', value='4000')
+                                label.radio-stock(for='q7b') Stock
+                            span
+                                input#q7c(name='q7', type='radio', value='10200')
+                                label.radio-beautiful(for='q7c') Beautiful
+                    li(data-input-trigger='')
+                        label.fs-field-label.fs-anim-upper(for='q8', data-info="Designing a quality app icon typically ranges from $500 - $2,000 but will help you stand out in the app store and on the device.") Do you need an app icon?
+                        .fs-radio-group.fs-radio-custom.clearfix.fs-anim-lower
+                            span
+                                input#q8a(name='q8', type='radio', value='3200')
+                                label.radio-yes-icon(for='q8a') Yes
+                            span
+                                input#q8b(name='q8', type='radio', value='0')
+                                label.radio-no-icon(for='q8b') No
+                            span
+                                input#q8c(name='q8', type='radio', value='0')
+                                label.radio-dont-know(for='q8c') I don't know
+
+                button.fs-submit(type='submit') HIRE US
+
+            .result.hidden-overview Your app estimation:&nbsp;
+                strong $12,000
+
+
+
+    include partials/footer

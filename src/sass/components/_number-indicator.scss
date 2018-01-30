@@ -1,0 +1,147 @@
+// *************************************
+//
+//   Number / Step indicator
+//
+// *************************************
+
+.fs-numbers {
+    position: absolute;
+    top: -8px;
+    right: 0;
+    overflow: hidden;
+    color: rgba(255,255,255, 0.3);
+    margin: 40px;
+    width: 2em;
+    font: 300 24px/1.5 $font-title;
+    cursor: default;
+    &:after {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        content: '/';
+        font-weight: 300;
+        opacity: 0.4;
+        left: 0;
+    }
+    span {
+        float: right;
+        width: 40%;
+        text-align: center;
+    }
+    .fs-number-current {
+        float: left;
+    }
+    .fs-number-new {
+        position: absolute;
+        left: 0;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    &.fs-show-next {
+        .fs-number-new {
+            -webkit-animation: animMoveUpFromDown 0.4s both;
+            animation: animMoveUpFromDown 0.4s both;
+        }
+        .fs-number-current {
+            -webkit-animation: animMoveUp 0.4s both;
+            animation: animMoveUp 0.4s both;
+        }
+    }
+    &.fs-show-prev {
+        .fs-number-new {
+            -webkit-animation: animMoveDownFromUp 0.4s both;
+            animation: animMoveDownFromUp 0.4s both;
+        }
+        .fs-number-current {
+            -webkit-animation: animMoveDown 0.4s both;
+            animation: animMoveDown 0.4s both;
+        }
+    }
+}
+
+
+
+
+/* Animations for numbers */
+
+/* Show next number */
+
+@-webkit-keyframes animMoveUpFromDown {
+    from {
+        -webkit-transform: translateY(100%);
+    }
+
+    to {
+        -webkit-transform: translateY(0);
+    }
+}
+
+
+@keyframes animMoveUpFromDown {
+    from {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+
+    to {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+
+@-webkit-keyframes animMoveUp {
+    to {
+        -webkit-transform: translateY(-100%);
+    }
+}
+
+
+@keyframes animMoveUp {
+    to {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+}
+
+
+/* Show previous number */
+
+@-webkit-keyframes animMoveDownFromUp {
+    from {
+        -webkit-transform: translateY(-100%);
+    }
+
+    to {
+        -webkit-transform: translateY(0);
+    }
+}
+
+
+@keyframes animMoveDownFromUp {
+    from {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+
+    to {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+
+@-webkit-keyframes animMoveDown {
+    to {
+        -webkit-transform: translateY(100%);
+    }
+}
+
+
+@keyframes animMoveDown {
+    to {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+}
+

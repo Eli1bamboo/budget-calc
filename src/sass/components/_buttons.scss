@@ -1,0 +1,65 @@
+// *************************************
+//
+//   Button styles
+//
+// *************************************
+
+/* Continue button and submit button */
+
+button {
+    &.fs-submit,
+    &.fs-continue {
+        padding: 0.6em 1.5em;
+        border: 3px solid #232529;
+        border-radius: 40px;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.4);
+        transition: $smooth;
+    }
+}
+
+.fs-form-overview .fs-submit,
+.no-js .fs-form .fs-submit {
+    display: block;
+}
+
+.fs-form-overview .fs-submit {
+    border-color: $color-title;
+    color: $color-white;
+    margin: 40px auto 0;
+}
+
+button {
+    &.fs-continue {
+        display: none;
+        position: fixed;
+        right: 5px;
+        bottom: 0;
+        margin: 0 40px 60px 0;
+        font-size: 1.25em;
+    }
+    &.fs-submit {
+        &:hover, &:focus {
+            background: #232529;
+            color: #fff;
+        }
+    }
+    &.fs-continue:hover {
+        background: #232529;
+        color: #fff;
+    }
+}
+
+.fs-continue::after {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    line-height: 3;
+    text-align: center;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.3);
+    content: 'or press ENTER';
+    font-size: 0.65em;
+    pointer-events: none;
+}

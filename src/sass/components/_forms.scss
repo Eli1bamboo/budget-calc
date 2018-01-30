@@ -1,0 +1,675 @@
+// *************************************
+//
+//   Form styles
+//
+// *************************************
+
+
+/* Form */
+
+.fs-form {
+    position: relative;
+    text-align: left;
+    font-size: 36px;
+}
+
+.no-js .fs-form {
+    padding: 0 0 6em 0;
+}
+
+
+
+/* Views (fullscreen and overview) */
+
+.fs-form-full {
+    top: 27%;
+    margin: 0 auto;
+    width: 70%;
+    max-width: 1100px;
+    @media (max-width: 600px) {}
+}
+
+.fs-message-error {
+    max-width: 1100px;
+}
+
+.fs-form-overview {
+    padding: 2.5em 30% 6em;
+    width: 100%;
+    height: 100%;
+    background: #3b3f45;
+    color: #fff;
+    font-size: 1.2em;
+    .fs-fields::before {}
+}
+
+/* Switch view animation (we hide the current view, switch the view class and show it again) */
+
+.fs-form.fs-show {
+    -webkit-animation: animFadeIn 0.5s;
+    animation: animFadeIn 0.5s;
+    .fs-fields {
+        -webkit-animation: animMove 0.5s;
+        animation: animMove 0.5s;
+    }
+}
+
+@-webkit-keyframes animFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes animFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@-webkit-keyframes animMove {
+    from { top: 100px; }
+}
+@keyframes animMove {
+    from { top: 100px; } /* we need to use top here because otherwise all our fixed elements will become absolute */
+}
+
+
+
+
+/* Visibility control of elements */
+
+.fs-form-full .fs-fields > li,
+.fs-nav-dots, .fs-progress,
+.fs-numbers, button.fs-continue,
+.fs-message-error, .fs-message-final {
+    visibility: hidden;
+}
+
+.no-js .fs-form-full .fs-fields > li {
+    visibility: visible;
+}
+
+.fs-show {
+    visibility: visible !important;
+}
+
+
+/* Some general styles */
+
+.fs-form-wrap {
+    button {
+        border: none;
+        background: none;
+        &[disabled] {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+    }
+    input:focus, button:focus {
+        outline: none;
+    }
+}
+
+
+.fs-form .fs-submit {
+    display: none; /* Hide the submit button */
+}
+
+
+/* Fields */
+
+.fs-fields {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    top: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.fs-form-overview ol {
+    max-width: 100%;
+}
+
+.fs-fields > li {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    border: none;
+    &:hover {
+        z-index: 999;
+    }
+}
+
+.js .fs-form-full .fs-fields > li {
+    position: absolute;
+    width: 100%;
+}
+
+.fs-form-overview .fs-fields > li, .no-js .fs-form .fs-fields > li {
+    margin: 10px 0;
+    padding: 10px 0;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Labels & info */
+
+.fs-fields > li label {
+    position: relative;
+    &.fs-field-label {
+        display: inline-block;
+        padding: 0 5px 1em 30px;
+        font-weight: 700;
+        pointer-events: none;
+    }
+}
+
+.fs-form-full .fs-fields > li {
+    label {
+        &[data-info] {
+            &::after {
+                position: relative;
+                display: inline-block;
+                margin-left: 10px;
+                width: 24px;
+                height: 24px;
+                border: 2px solid $color-title;
+                color: $color-title;
+                border-radius: 50%;
+                content: 'i';
+                vertical-align: top;
+                text-align: center;
+                font-weight: 700;
+                font-style: italic;
+                font-size: 14px;
+                font-family: Georgia, serif;
+                line-height: 20px;
+                cursor: pointer;
+                pointer-events: auto;
+            }
+            &::before {
+                position: absolute;
+                bottom: 75%;
+                left: 0;
+                padding: 0 0 30px 5px;
+                width: 100%;
+                min-width: 200px;
+                content: attr(data-info);
+                font-size: 17px;
+                line-height: 1.5;
+                font-weight: 300;
+                color: #a1a7b6;
+                opacity: 0;
+                -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+                transition: opacity 0.3s, transform 0.3s;
+                -webkit-transform: translate3d(0, -5px, 0);
+                transform: translate3d(0, -5px, 0);
+                pointer-events: none;
+            }
+            &:hover::before {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        &:hover ~ .fs-info {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+    }
+    .fs-info:hover {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+
+.fs-fields {
+    .fs-radio-custom input[type="radio"] {
+        position: absolute;
+        display: block;
+        margin: 0 auto 20px;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    > li .fs-radio-custom span {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        margin: 0 .5%;
+        padding: 0 10px;
+        max-width: 250px;
+        width: 32%;
+        text-align: center;
+        font-weight: 400;
+        font-size: 50%;
+        font-family: $font-text;
+        line-height: 1.4;
+        @media (min-width: $screen-sm-min) {
+            width: 24%;
+        }
+        @media (max-width: 600px) {
+            width: 49%;
+        }
+        label {
+            color: rgba(255,255,255, 0.5);
+            -webkit-transition: color 0.3s;
+            transition: color 0.3s;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            .overview & {
+                color: rgba(#fff, 0.25);
+                margin-top: -30px;
+            }
+        }
+        &:hover {
+            label {
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.fs-form-overview .fs-fields > li .fs-radio-custom span {
+    max-width: 140px;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.fs-fields {
+    > li .fs-radio-custom label {
+        display: block;
+        padding-top: 100%;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+    .fs-radio-custom label {
+        &::after {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background-position: 50% 0%;
+            background-size: 85%;
+            background-repeat: no-repeat;
+            content: '';
+            opacity: 0.4;
+            -webkit-transition: opacity 0.2s;
+            transition: opacity 0.2s;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            .overview & {
+                width: 80%;
+                top: 70%;
+            }
+        }
+        &.radio-mobile::after {
+            background-image: url(../images/mobile.svg);
+        }
+        &.radio-social::after {
+            background-image: url(../images/social.svg);
+        }
+        &.radio-conversion::after {
+            background-image: url(../images/conversion.svg);
+        }
+
+        &.radio-android::after {
+            background-image: url(../images/ic_android.png);
+        }
+        &.radio-ios::after {
+            background-image: url(../images/ic_ios.png);
+        }
+        &.radio-android-ios::after {
+            background-image: url(../images/ic_android-ios.png);
+        }
+        &.radio-email::after {
+            background-image: url(../images/ic_email.png);
+        }
+        &.radio-social::after {
+            background-image: url(../images/ic_social.png);
+        }
+        &.radio-money::after {
+            background-image: url(../images/ic_money.png);
+        }
+        &.radio-app-buy::after {
+            background-image: url(../images/ic_app-buy.png);
+        }
+        &.radio-free::after {
+            background-image: url(../images/ic_free.png);
+        }
+        &.radio-yes-profile::after {
+            background-image: url(../images/ic_yes-profile.png);
+        }
+        &.radio-no-profile::after {
+            background-image: url(../images/ic_no-profile.png);
+        }
+        &.radio-yes-reviews::after {
+            background-image: url(../images/ic_yes-reviews.png);
+        }
+        &.radio-no-reviews::after {
+            background-image: url(../images/ic_no-reviews.png);
+        }
+        &.radio-yes-website::after {
+            background-image: url(../images/ic_yes-website.png);
+        }
+        &.radio-no-website::after {
+            background-image: url(../images/ic_no-website.png);
+        }
+        &.radio-yes::after {
+            background-image: url(../images/ic_yes.png);
+        }
+        &.radio-no::after {
+            background-image: url(../images/ic_no.png);
+        }
+        &.radio-dont-know::after {
+            background-image: url(../images/ic_dont-know.png);
+        }
+        &.radio-bare-bones::after {
+            background-image: url(../images/ic_bare-bones.png);
+        }
+        &.radio-stock::after {
+            background-image: url(../images/ic_stock.png);
+        }
+        &.radio-beautiful::after {
+            background-image: url(../images/ic_beautiful.png);
+        }
+        &.radio-yes-icon::after {
+            background-image: url(../images/ic_yes-icon.png);
+        }
+        &.radio-no-icon::after {
+            background-image: url(../images/ic_no-icon.png);
+        }
+
+
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+    input[type="radio"] {
+        &:focus + label::after, &:checked + label::after {
+            opacity: 1;
+        }
+    }
+    .fs-radio-custom input[type="radio"]:checked + label {
+        color: #fff;
+    }
+}
+
+.fs-form-overview .fs-fields .fs-radio-custom input[type="radio"]:checked + label {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+.fs-fields {
+    textarea::-webkit-input-placeholder,
+    input:-moz-placeholder,
+    textarea:-moz-placeholder,
+    input::-moz-placeholder,
+    textarea::-moz-placeholder,
+    input:-ms-input-placeholder,
+    textarea:-ms-input-placeholder {
+        color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+
+
+
+/* Animation classes & animations */
+
+.fs-form {
+    li {
+        &.fs-current {
+            visibility: visible;
+        }
+        &.fs-hide, &.fs-show {
+            pointer-events: none;
+        }
+    }
+    .fs-display-next {
+        .fs-hide {
+            visibility: visible;
+            .fs-anim-lower, .fs-anim-upper {
+                -webkit-animation: animHideNext 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+                animation: animHideNext 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+            }
+            .fs-anim-lower {
+                -webkit-animation-delay: 0.1s;
+                animation-delay: 0.1s;
+            }
+        }
+        .fs-show {
+            .fs-anim-lower, .fs-anim-upper {
+                -webkit-animation: animShowNext 0.5s cubic-bezier(0.7, 0, 0.3, 1) both 0.15s;
+                animation: animShowNext 0.5s cubic-bezier(0.7, 0, 0.3, 1) both 0.15s;
+            }
+            .fs-anim-lower {
+                -webkit-animation-delay: 0.25s;
+                animation-delay: 0.25s;
+            }
+        }
+    }
+    .fs-display-prev {
+        .fs-hide {
+            visibility: visible;
+            .fs-anim-lower {
+                -webkit-animation: animHidePrev 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+                animation: animHidePrev 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+            }
+            .fs-anim-upper {
+                -webkit-animation: animHidePrev 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+                animation: animHidePrev 0.5s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+                -webkit-animation-delay: 0.1s;
+                animation-delay: 0.1s;
+            }
+        }
+        .fs-show {
+            .fs-anim-lower {
+                -webkit-animation: animShowPrev 0.5s cubic-bezier(0.7, 0, 0.3, 1) both 0.15s;
+                animation: animShowPrev 0.5s cubic-bezier(0.7, 0, 0.3, 1) both 0.15s;
+            }
+            .fs-anim-upper {
+                -webkit-animation: animShowPrev 0.5s cubic-bezier(0.7, 0, 0.3, 1) both 0.15s;
+                animation: animShowPrev 0.5s cubic-bezier(0.7, 0, 0.3, 1) both 0.15s;
+                -webkit-animation-delay: 0.25s;
+                animation-delay: 0.25s;
+            }
+        }
+    }
+}
+
+/* Hide current li when navigating to next question */
+
+@-webkit-keyframes animHideNext {
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -500px, 0);
+    }
+}
+
+
+@keyframes animHideNext {
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -500px, 0);
+        transform: translate3d(0, -500px, 0);
+    }
+}
+
+
+/* Show new li when navigating to next question */
+
+@-webkit-keyframes animShowNext {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 500px, 0);
+    }
+}
+
+
+@keyframes animShowNext {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 500px, 0);
+        transform: translate3d(0, 500px, 0);
+    }
+}
+
+
+/* Hide current li when navigating to previous question */
+
+@-webkit-keyframes animHidePrev {
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 500px, 0);
+    }
+}
+
+
+@keyframes animHidePrev {
+    to {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 500px, 0);
+        transform: translate3d(0, 500px, 0);
+    }
+}
+
+
+/* Show new li when navigating to previous question */
+
+@-webkit-keyframes animShowPrev {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -500px, 0);
+    }
+}
+
+
+@keyframes animShowPrev {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -500px, 0);
+        transform: translate3d(0, -500px, 0);
+    }
+}
+
+
+/* Remove IE clear cross */
+
+input[type=text]::-ms-clear {
+    display: none;
+}
+
+/* Adjust form for smaller screens */
+@media screen and (max-width: 52.5em) {
+    body {
+        min-height: 500px;
+    }
+    .fs-form-wrap {
+        font-size: 70%;
+    }
+    .fs-form {
+        top: 6em;
+        right: 2em;
+        left: 0;
+        padding: 0 3.75em 0 1em;
+        width: auto;
+        font-size: 2em;
+        &.fs-form-overview {
+            top: 0;
+            right: 0;
+            padding: 1.5em 1em 8em 1em;
+            font-size: 1.5em;
+        }
+    }
+    .fs-title {
+        padding: 20px;
+    }
+    .fs-numbers {
+        margin: 20px;
+    }
+    .fs-nav-dots {
+        right: 20px;
+    }
+    button.fs-continue {
+        right: 20px;
+        bottom: 20px;
+        margin: 0;
+        padding: 50px 0 0 50px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 2em;
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            content: '\27A1';
+            text-align: center;
+            font-size: 1em;
+            line-height: 50px;
+        }
+    }
+    .fs-continue::after {
+        content: '';
+    }
+    button.fs-submit {
+        width: 100%;
+        font-size: 1.25em;
+    }
+    .fs-message-error {
+        bottom: 1.75em;
+        left: 0;
+        padding: 0 90px 0 2em;
+        width: 100%;
+        font-size: 1.5em;
+        -webkit-transform: translate3d(0, -5px, 0);
+        transform: translate3d(0, -5px, 0);
+        &.fs-show {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+    }
+}
+
+
+
+
+
+
+
+/* Error message */
+
+.fs-message-error {
+    position: absolute;
+    bottom: 75%;
+    left: 50%;
+    z-index: 800;
+    max-width: 960px;
+    width: 70%;
+    color: #eb7e7f;
+    font-weight: 700;
+    font-size: 1em;
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, -5px, 0);
+    transform: translate3d(-50%, -5px, 0);
+    &.fs-show {
+        opacity: 1;
+        -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+        transition: transform 0.3s, opacity 0.3s;
+        -webkit-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
+    }
+}

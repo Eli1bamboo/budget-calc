@@ -1,0 +1,15 @@
+// *************************************
+//
+//   Progress bar
+//
+// *************************************
+
+.fs-progress {
+    position: absolute;
+    top: 0;
+    width: 0%;
+    height: 0.5em;
+    background: $color-yellow;
+    -webkit-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+}
